@@ -46,7 +46,7 @@ namespace VideoAscii
 
             Console.Clear();
 
-           LoadVideo();
+           //LoadVideo();
             bmpText();
 
             Console.WriteLine("Thank you for using video to ASCII App!");
@@ -83,9 +83,29 @@ namespace VideoAscii
                 }
                 catch (Exception)
                 {
+
+                    //FIX THIS ERROR
                     Console.WriteLine("video.wav was not found on the folder Input");
                     Console.WriteLine("THIS ERROR SHOULD NOT APPEAR, MAKE SURE YOU HAVE A PLACE HOLDER .wav FILE, WILL BE FIXED ON FUTURE RELEASE");
-                   
+                    
+                    
+                    Console.WriteLine(@"░░░░░▄▄░░░░░░░░░░░░░░░░
+                                        ░░░▄▀█▓▓█████▓▓▓█░░░░░░
+                                        ░░░▄█▓▓█████████▓▓█▌░░░
+                                        ░░█▓▓██▓▓▓▓▓▓█████▓█░░░
+                                        ░▐███████████▓▓████▓█░░
+                                        ░▐▌██▀▐▀▐▀▐█▌▀▌▐▀█▓██░░
+                                        ░▐░██░▄▀▀▄░░▄▀▀▄▒█▓█▌░░
+                                        ░░░▐▌▌░▐▓▌░░░▐▓▌▒█▓█▌░░
+                                        ░░░░░▌░░▀░░░░░▀░▒█▓█▌░░
+                                        ░░░░▐█░░░░▌░░░░░▐█▓█▌░░
+                                        ░░░░███░░░▄▄░░░▒███▓▌░░
+                                        ░░░▐▓███▒░░░░░▒▓███▓█░░
+                                        ░░░█▓████▒▓▓▓▓▓█████▓█░
+                                        ░░▐▓█████▒▒▒▒▒▓█████▓█▌
+                                        ░░█▓████▒▒░░░▒▒▓████▓▓█▌");
+                    Console.ReadLine();
+                    Console.Clear();
                 }
                 
 
