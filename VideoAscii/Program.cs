@@ -18,12 +18,31 @@ namespace VideoAscii
         
         static void Main(string[] args)
         {
+            
+            
+            
+
+            if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "Input"))
+            {
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "Input");
+            }
+
+            if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "Output"))
+            {
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "Output");
+            }
+
             Console.Title = "Video to ASCII APP";
             Console.WriteLine("Video to ascii App!");
             Console.WriteLine("*********************\n");
             Console.WriteLine("\n Make sure you have your video ready on Input as video.mp4");
+            Console.WriteLine("\n This windows will go fullscreen once you continue");
             Console.WriteLine("\nPress any key to continue . . .");
+
             Console.ReadKey();
+#pragma warning disable CA1416 // Validate platform compatibility
+            Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+#pragma warning restore CA1416 // Validate platform compatibility
 
             Console.Clear();
 
@@ -43,7 +62,7 @@ namespace VideoAscii
             StringBuilder sb = new StringBuilder();
             Console.Clear();
             Console.WriteLine("Preparing video . . .");
-            System.IO.DirectoryInfo di = new DirectoryInfo(@"C:\\Users\\david\\source\\repos\\VideoAscii\\VideoAscii\\Output");
+            System.IO.DirectoryInfo di = new DirectoryInfo(@".\Output");
             int i = 0;
             if (OperatingSystem.IsWindows())
             {
@@ -54,11 +73,21 @@ namespace VideoAscii
                 //Currently uses placeholder premade .wav
                 //TODO
                 //Create function to convert video music into a .wav audio file to use it for the animation.
-                sp = new SoundPlayer(assembly.GetManifestResourceStream(@".\Input\\video.wav"));
-                sp.SoundLocation = @".\Input\\video.wav";
-                sp.Load();
+                try
+                {
+                    sp = new SoundPlayer(assembly.GetManifestResourceStream(@".\Input\\video.wav"));
+                    sp.SoundLocation = @".\Input\\video.wav";
+                    sp.Load();
 
-                sp.Play();
+                    sp.Play();
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("video.wav was not found on the folder Input");
+                    Console.WriteLine("THIS ERROR SHOULD NOT APPEAR, MAKE SURE YOU HAVE A PLACE HOLDER .wav FILE, WILL BE FIXED ON FUTURE RELEASE");
+                   
+                }
+                
 
             }
             foreach (FileInfo file in di.GetFiles())
@@ -141,14 +170,26 @@ namespace VideoAscii
                 using (var img = new Mat())
                 {
                     int i = 0;
-                    while (video.Grab())
+                    if (video.Grab())
                     {
+                        while (video.Grab())
+                        {
 
-                        video.Retrieve(img);
-                        var filename = Path.Combine(@".\Output", $"{i}.bmp");
-                        CvInvoke.Imwrite(filename, img);
-                        i++;
+                            video.Retrieve(img);
+                            var filename = Path.Combine(@".\Output", $"{i}.bmp");
+                            CvInvoke.Imwrite(filename, img);
+                            i++;
+                        }
                     }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("An error ocurred");
+                        Console.WriteLine("Video not found. \n Make sure the video is named like video.mp4 and place it in the Input folder");
+                        Console.ReadKey();
+                        return;
+                    }
+                    
                 }
             }
             catch (Exception)
