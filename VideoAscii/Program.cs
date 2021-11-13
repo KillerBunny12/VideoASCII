@@ -54,8 +54,8 @@ namespace VideoAscii
                 //Currently uses placeholder premade .wav
                 //TODO
                 //Create function to convert video music into a .wav audio file to use it for the animation.
-                sp = new SoundPlayer(assembly.GetManifestResourceStream("C:\\Users\\david\\source\\repos\\VideoAscii\\VideoAscii\\Input\\video.wav"));
-                sp.SoundLocation = "C:\\Users\\david\\source\\repos\\VideoAscii\\VideoAscii\\Input\\video.wav";
+                sp = new SoundPlayer(assembly.GetManifestResourceStream(@".\Input\\video.wav"));
+                sp.SoundLocation = @".\Input\\video.wav";
                 sp.Load();
 
                 sp.Play();
@@ -65,7 +65,7 @@ namespace VideoAscii
             {
 
                 Console.Title = "Video to ASCII APP - PLAYING     frame: " + i + "   framerate: " + CalculateFrameRate() + "fps";
-                var filename = Path.Combine(@"C:\\Users\\david\\source\\repos\\VideoAscii\\VideoAscii\\Output", $"{i}.bmp");
+                var filename = Path.Combine(@".\Output", $"{i}.bmp");
                 var img = new Bitmap(filename);
                 
                     //Console.WriteLine("Printing . . .");
@@ -122,7 +122,7 @@ namespace VideoAscii
         {
             Console.WriteLine("Deleting files on Output . . .");
             Console.Title = "Video to ASCII APP - LOADING";
-            System.IO.DirectoryInfo di = new DirectoryInfo(@"C:\\Users\\david\\source\\repos\\VideoAscii\\VideoAscii\\Output");
+            System.IO.DirectoryInfo di = new DirectoryInfo(@".\Output");
 
             foreach (FileInfo file in di.GetFiles())
             {
@@ -137,7 +137,7 @@ namespace VideoAscii
             Console.WriteLine("Loading video . . .");
             try
             {
-                using (var video = new VideoCapture("C:\\Users\\david\\source\\repos\\VideoAscii\\VideoAscii\\Input\\video.mp4"))
+                using (var video = new VideoCapture(@".\Input\\video.mp4"))
                 using (var img = new Mat())
                 {
                     int i = 0;
@@ -145,7 +145,7 @@ namespace VideoAscii
                     {
 
                         video.Retrieve(img);
-                        var filename = Path.Combine(@"C:\\Users\\david\\source\\repos\\VideoAscii\\VideoAscii\\Output", $"{i}.bmp");
+                        var filename = Path.Combine(@".\Output", $"{i}.bmp");
                         CvInvoke.Imwrite(filename, img);
                         i++;
                     }

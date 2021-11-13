@@ -11,8 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Text\**" />
+    <EmbeddedResource Remove="Text\**" />
+    <None Remove="Text\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Input\" />
-    <Folder Include="Text\" />
     <Folder Include="Output\" />
   </ItemGroup>
 
