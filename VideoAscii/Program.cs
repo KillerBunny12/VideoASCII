@@ -28,14 +28,14 @@ namespace VideoAscii
             Console.Clear();
 
            LoadVideo();
-            bmpText(@"C:\\Users\\david\\source\\repos\\VideoAscii\\VideoAscii\\Text\\text.txt");
+            bmpText();
 
             Console.WriteLine("Thank you for using video to ASCII App!");
         }
 
         //Reads each pixel of the frame of the video and assigns an ascii character into that index of a string builder.
         //once a frame is ready it is printed and the next one starts building
-        public static void bmpText(String savelocation)
+        public static void bmpText()
         {
             SoundPlayer sp;
 
@@ -51,7 +51,9 @@ namespace VideoAscii
 
                 assembly = Assembly.GetExecutingAssembly();
 
-
+                //Currently uses placeholder premade .wav
+                //TODO
+                //Create function to convert video music into a .wav audio file to use it for the animation.
                 sp = new SoundPlayer(assembly.GetManifestResourceStream("C:\\Users\\david\\source\\repos\\VideoAscii\\VideoAscii\\Input\\video.wav"));
                 sp.SoundLocation = "C:\\Users\\david\\source\\repos\\VideoAscii\\VideoAscii\\Input\\video.wav";
                 sp.Load();
