@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoAscii", "VideoAscii\VideoAscii.csproj", "{2D4A7899-D155-4B48-87B8-4E4EEDB629F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D4A7899-D155-4B48-87B8-4E4EEDB629F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D4A7899-D155-4B48-87B8-4E4EEDB629F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D4A7899-D155-4B48-87B8-4E4EEDB629F0}.Debug|x64.ActiveCfg = Debug|x64
+		{2D4A7899-D155-4B48-87B8-4E4EEDB629F0}.Debug|x64.Build.0 = Debug|x64
+		{2D4A7899-D155-4B48-87B8-4E4EEDB629F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D4A7899-D155-4B48-87B8-4E4EEDB629F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D4A7899-D155-4B48-87B8-4E4EEDB629F0}.Release|x64.ActiveCfg = Release|x64
+		{2D4A7899-D155-4B48-87B8-4E4EEDB629F0}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {714081AB-EF54-47B2-ACD8-7F8462693FDB}
+	EndGlobalSection
+EndGlobal
