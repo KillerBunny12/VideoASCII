@@ -27,7 +27,7 @@ namespace VideoAscii
 
             Console.Clear();
 
-           //LoadVideo();
+           LoadVideo();
             bmpText(@"C:\\Users\\david\\source\\repos\\VideoAscii\\VideoAscii\\Text\\text.txt");
 
             Console.WriteLine("Thank you for using video to ASCII App!");
