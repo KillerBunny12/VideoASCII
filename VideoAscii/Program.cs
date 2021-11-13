@@ -46,7 +46,7 @@ namespace VideoAscii
 
             Console.Clear();
 
-           //LoadVideo();
+           LoadVideo();
             bmpText();
 
             Console.WriteLine("Thank you for using video to ASCII App!");
@@ -138,7 +138,7 @@ namespace VideoAscii
 
                 //affects performance?????????
                 //Removing it makes text jitter at the beginning
-                    Console.SetCursorPosition(Console.WindowLeft, 0);
+                   Console.SetCursorPosition(Console.WindowLeft, 0);
                     Console.Write(sb.ToString());
                //Console.WriteLine(CalculateFrameRate());
                 
