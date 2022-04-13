@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+	  <TargetFramework>net6.0-windows</TargetFramework>
+	  <UseWindowsForms>true</UseWindowsForms>
     <Platforms>AnyCPU;x64</Platforms>
     <ApplicationIcon>games-ascii.ico</ApplicationIcon>
     <Authors>David Vargas</Authors>
@@ -17,6 +18,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ffmpeg.exe" />
+    <None Remove="ffprobe.exe" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ffmpeg.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ffprobe.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Input\" />
     <Folder Include="Output\" />
   </ItemGroup>
@@ -26,6 +41,7 @@
     <PackageReference Include="Emgu.CV.runtime.windows" Version="4.5.3.4721" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
     <PackageReference Include="System.Windows.Extensions" Version="5.0.0" />
+    <PackageReference Include="Xabe.FFmpeg" Version="5.1.0" />
   </ItemGroup>
 
 </Project>

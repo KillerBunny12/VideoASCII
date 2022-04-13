@@ -5,17 +5,26 @@ using System.Media;
 using System.Reflection;
 using System.Text;
 using Emgu.CV;
-
+using System.Windows.Forms;
+using Xabe.FFmpeg;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic.Logging;
 
 namespace VideoAscii
 {
+
+    
     class Program
     {
         public static string pixels = " .-+*#";
         private static int lastTick;
         private static int lastFrameRate = 0;
         private static int frameRate = 0;
-        
+       // OpenFileDialog od = new OpenFileDialog();
+        private static string filepath;
+        private static string wavpath;
+
+        [STAThread]
         static void Main(string[] args)
         {
             
@@ -47,6 +56,7 @@ namespace VideoAscii
             Console.Clear();
 
            LoadVideo();
+            ConvertAudio().GetAwaiter().GetResult();
             bmpText();
 
             Console.WriteLine("Thank you for using video to ASCII App!");
@@ -54,6 +64,17 @@ namespace VideoAscii
 
         //Reads each pixel of the frame of the video and assigns an ascii character into that index of a string builder.
         //once a frame is ready it is printed and the next one starts building
+
+        public static async Task ConvertAudio()
+        {
+            Console.Clear();
+            Console.WriteLine("Converting audio...");
+            wavpath = @".\Output\video.wav";
+           // wavpath = filepath.Replace(".mp4", ".wav");
+            var snippet = await FFmpeg.Conversions.FromSnippet.ExtractAudio(filepath, wavpath);
+            IConversionResult result = await snippet.Start();
+        }
+       
         public static void bmpText()
         {
             SoundPlayer sp;
@@ -73,10 +94,16 @@ namespace VideoAscii
                 //Currently uses placeholder premade .wav
                 //TODO
                 //Create function to convert video music into a .wav audio file to use it for the animation.
+                
                 try
                 {
-                    sp = new SoundPlayer(assembly.GetManifestResourceStream(@".\Input\\video.wav"));
-                    sp.SoundLocation = @".\Input\\video.wav";
+
+                    
+
+                    
+
+                    sp = new SoundPlayer(assembly.GetManifestResourceStream(wavpath));
+                    sp.SoundLocation = wavpath;
                     sp.Load();
 
                     sp.Play();
@@ -186,7 +213,12 @@ namespace VideoAscii
             Console.WriteLine("Loading video . . .");
             try
             {
-                using (var video = new VideoCapture(@".\Input\\video.mp4"))
+                OpenFileDialog od1 = new OpenFileDialog();
+                od1.Title = "Choose a video";
+                od1.Filter = "Video file|*.mp4";
+                od1.ShowDialog();
+                filepath = od1.FileName;
+                using (var video = new VideoCapture(filepath.ToString()))
                 using (var img = new Mat())
                 {
                     int i = 0;
