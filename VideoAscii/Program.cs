@@ -316,6 +316,7 @@ namespace VideoAscii
                     }
                     else
                     {
+
                         Console.Clear();
                         Console.WriteLine("An error ocurred");
                         Console.WriteLine("Video not found. \n Make sure the video is named like video.mp4 and place it in the Input folder");
